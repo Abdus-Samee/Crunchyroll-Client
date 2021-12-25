@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 const pages = ['Products', 'Pricing', 'Blog', 'Preferences'];
-const settings = ['Profile', 'Dashboard', 'Logout'];
+const settings = [ 'Dashboard', 'Logout'];
 
 const Navbar = ({ logOutFunction }) => {
   const navigate = useNavigate()
@@ -50,7 +50,7 @@ const Navbar = ({ logOutFunction }) => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
-            CRUNCHYROLL
+              CRUNCHYROLL
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

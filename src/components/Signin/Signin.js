@@ -40,7 +40,7 @@ async function loginUser(credentials) {
 
 const theme = createTheme();
 
-export default function SignIn({setToken}) {
+export default function SignIn({setToken, setAction}) {
   const [formErrors, setFormErrors] = useState({})
 
   const handleSubmit = async e => {
@@ -57,7 +57,7 @@ export default function SignIn({setToken}) {
         });
         //set an alert if the token is not valid or is empty i.e. user credentials are wrong
         setToken(token);
-        }else{
+    }else{
         console.log(formErrors)
         console.log("Error  submitting form...")
     }
@@ -126,7 +126,7 @@ export default function SignIn({setToken}) {
                 
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link onClick={() => setAction('signup')} href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

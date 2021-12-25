@@ -7,7 +7,7 @@ import './App.css'
 import Dashboard from './components/Dashboard'
 import Preference from './components/Preference'
 import Navbar from './components/Navbar/Navbar'
-import SignIn from './components/Signin/Signin'
+import ToggleForm from './components/ToggleForm/ToggleForm'
 
 import useToken from './hooks/useToken'
 
@@ -30,7 +30,7 @@ function App() {
 
   if(!token) {
     // return <Login setToken={setToken} />
-    return <SignIn setToken={setToken} />
+    return <ToggleForm setToken={setToken} />
   }
 
   return (
