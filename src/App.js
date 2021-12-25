@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Container } from '@mui/material'
 
 import './App.css'
 
 import Dashboard from './components/Dashboard'
-import Login from './components/Login/Login'
 import Preference from './components/Preference'
 import Navbar from './components/Navbar/Navbar'
+import SignIn from './components/Signin/Signin'
 
 import useToken from './hooks/useToken'
 
@@ -28,19 +29,21 @@ function App() {
   }
 
   if(!token) {
-    return <Login setToken={setToken} />
+    // return <Login setToken={setToken} />
+    return <SignIn setToken={setToken} />
   }
 
   return (
     <div className="wrapper">
       <Router>
         <Navbar logOutFunction={refreshToken} />
-        <h1>Application</h1>
-        <button onClick={refreshToken}>Log out</button>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/preferences" element={<Preference />} />
-        </Routes>
+        <Container>
+          <h1>Crunchyroll</h1>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/preferences" element={<Preference />} />
+          </Routes>
+        </Container>
       </Router>
     </div>
   );
