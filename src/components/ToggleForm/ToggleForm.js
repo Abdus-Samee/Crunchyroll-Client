@@ -19,10 +19,10 @@ export default function ToggleForm({setToken}) {
   return (
     <Container>
         <ToggleButtonGroup
-        value={action}
-        exclusive
-        onChange={handleSignInSignUp}
-        aria-label="signin/signup"
+          value={action}
+          exclusive
+          onChange={handleSignInSignUp}
+          aria-label="signin/signup"
         >
         <ToggleButton value="signin" aria-label="left aligned">
             Sign In

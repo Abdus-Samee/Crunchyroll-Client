@@ -28,20 +28,21 @@ function App() {
     setToken('')
   }
 
-  if(!token) {
-    // return <Login setToken={setToken} />
-    return <ToggleForm setToken={setToken} />
-  }
+  // if(!token) {
+  //   // return <Login setToken={setToken} />
+  //   return <ToggleForm setToken={setToken} />
+  // }
 
   return (
     <div className="wrapper">
       <Router>
-        <Navbar logOutFunction={refreshToken} />
+        <Navbar token={token} logOutFunction={refreshToken} />
         <Container>
-          <h1>Crunchyroll</h1>
+          <h1>Animes</h1>
           <Routes>
+            <Route path="/" exact element={<Preference />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/preferences" element={<Preference />} />
+            <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
           </Routes>
         </Container>
       </Router>
