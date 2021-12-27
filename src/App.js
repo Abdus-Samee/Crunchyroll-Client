@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard'
 import Preference from './components/Preference'
 import Navbar from './components/Navbar/Navbar'
 import ToggleForm from './components/ToggleForm/ToggleForm'
+import Anime from './components/Anime'
 
 import useToken from './hooks/useToken'
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/" exact element={<Preference />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
+            <Route path="/anime" element={<Anime />} />
           </Routes>
         </Container>
       </Router>
