@@ -1,4 +1,4 @@
-function Anime() {
+const Anime = () => {
     return (
         <div>
             In video

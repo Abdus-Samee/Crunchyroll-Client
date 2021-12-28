@@ -9,6 +9,7 @@ import Preference from './components/Preference'
 import Navbar from './components/Navbar/Navbar'
 import ToggleForm from './components/ToggleForm/ToggleForm'
 import Anime from './components/Anime'
+import Manga from './components/Manga'
 
 import useToken from './hooks/useToken'
 
@@ -39,12 +40,13 @@ function App() {
       <Router>
         <Navbar token={token} logOutFunction={refreshToken} />
         <Container>
-          <h1>Animes</h1>
+          <br/>
           <Routes>
             <Route path="/" exact element={<Preference />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/anime" element={<Anime />} />
+            <Route path="/manga" element={<Manga />} />
           </Routes>
         </Container>
       </Router>
