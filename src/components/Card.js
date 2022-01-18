@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-const AnimeCard = ({title, synopsis, premium}) => {
+const AnimeCard = ({title, synopsis, release}) => {
     const navigate = useNavigate()
 
     return (
@@ -17,7 +17,9 @@ const AnimeCard = ({title, synopsis, premium}) => {
                 <Typography variant="body2">
                     {synopsis}
                 </Typography>
-                {premium==='Y' && <Typography variant="body2">Buy now!</Typography>}
+                <Typography variant="body2">
+                    {new Date(release).toLocaleDateString()}
+                </Typography>
             </CardContent>
             <CardActions>
                 <Button onClick={() => navigate('/anime')} size="small">Watch</Button>

@@ -27,7 +27,7 @@ function Preference() {
                     <Grid item xs={2} sm={4} md={4} key={anime.ID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <AnimeCard title={anime.TITLE} synopsis={anime.SYNOPSIS} premium={anime.ISPREMIUM} />
+                                <AnimeCard title={anime.TITLE} synopsis={anime.SYNOPSIS} release={anime['Release Date']} />
                             </Card>
                         </Box>
                     </Grid>
@@ -39,7 +39,7 @@ function Preference() {
                     <Grid item xs={2} sm={4} md={4} key={manga.ID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <MangaCard title={manga.TITLE} synopsis={manga.SYNOPSIS} premium={manga.ISPREMIUM} />
+                                <MangaCard title={manga.TITLE} synopsis={manga.SYNOPSIS} release={manga['Release Date']} />
                             </Card>
                         </Box>
                     </Grid>
