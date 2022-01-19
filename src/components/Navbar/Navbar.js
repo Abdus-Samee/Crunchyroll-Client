@@ -32,7 +32,7 @@ const Navbar = ({ token, logOutFunction }) => {
   const handleCloseNavMenu = (page) => {
     //works on every link on navbar
     console.log(page)
-    if(page === 'Preferences') navigate('/preferences')
+    if(page === 'Genres') navigate('/genres')
     else if(page === 'Logout') logOutFunction()
     else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication')
 

@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar'
 import ToggleForm from './components/ToggleForm/ToggleForm'
 import Anime from './components/Anime'
 import Manga from './components/Manga'
+import Genre from './components/Genre/Genre'
 
 import useToken from './hooks/useToken'
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/anime" element={<Anime />} />
             <Route path="/manga" element={<Manga />} />
+            <Route path="/genres" element={<Genre />} />
           </Routes>
         </Container>
       </Router>
