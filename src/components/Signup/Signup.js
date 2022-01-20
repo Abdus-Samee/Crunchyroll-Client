@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
@@ -40,6 +39,7 @@ async function signupMember(credentials) {
 const theme = createTheme()
 
 export default function SignUp({setToken, setAction}) {
+  const navigate = useNavigate()
   const [formErrors, setFormErrors] = useState({})
 
   const handleSubmit = async e => {
@@ -56,6 +56,8 @@ export default function SignUp({setToken, setAction}) {
         })
         //set an alert if the token is not valid or is empty i.e. user credentials are wrong
         setToken(token)
+
+        if(token) navigate(-1)
     }else{
         console.log(formErrors)
         console.log("Error  submitting form...")

@@ -55,8 +55,11 @@ export default function SignIn({setToken, setAction}) {
             email,
             password
         });
-        //set an alert if the token is not valid or is empty i.e. user credentials are wrong
+        
         setToken(token)
+
+        //set an alert if the token is not valid or is empty i.e. user credentials are wrong
+        //if wrong, don't navigate to the home page
         navigate(-1)
     }else{
         console.log(formErrors)

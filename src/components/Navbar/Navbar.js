@@ -34,7 +34,7 @@ const Navbar = ({ token, logOutFunction }) => {
     console.log(page)
     if(page === 'Genres') navigate('/genres')
     else if(page === 'Logout') logOutFunction()
-    else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication')
+    else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication') //clicking sign up should navigate to sign up page
 
     setAnchorElNav(null)
   };
