@@ -27,7 +27,7 @@ function Preference() {
                     <Grid item xs={2} sm={4} md={4} key={anime.ID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <AnimeCard title={anime.TITLE} synopsis={anime.SYNOPSIS} release={anime['Release Date']} />
+                                <AnimeCard animeId={anime.ANIMEID} title={anime.TITLE} synopsis={anime.SYNOPSIS} release={anime['Release Date']} />
                             </Card>
                         </Box>
                     </Grid>
