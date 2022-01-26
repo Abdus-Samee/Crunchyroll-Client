@@ -28,10 +28,10 @@ const AnimeInfo = () => {
             <h5>{ info.SYNOPSIS }</h5>
             <p>Released on : { new Date(info['Release Date'] ).toLocaleDateString() }</p>
             <List component="nav" aria-label="mailbox folders">
-                {episodes.map(episode => (
+                {episodes.map((episode, index) => (
                     <>
                         <ListItem button divider onClick={() => navigate('/anime')}>
-                            <ListItemText primary={'Episode ' + episode.EPISODE} />
+                            <ListItemText primary={'Episode ' + (index+1) + ', Link: ' + episode.EPISODE} />
                         </ListItem>
                         <Divider />
                     </>
