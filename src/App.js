@@ -12,6 +12,7 @@ import Anime from './components/Anime'
 import Manga from './components/Manga'
 import Genre from './components/Genre/Genre'
 import AnimeInfo from './components/AnimeInfo/AnimeInfo'
+import MangaInfo from './components/MangaInfo/MangaInfo'
 
 import useToken from './hooks/useToken'
 
@@ -49,7 +50,8 @@ function App() {
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/anime" element={<Anime />} />
             <Route path="/anime/:animeId" element={<AnimeInfo />} />
-            <Route path="/manga" element={<Manga />} />
+            <Route path="/manga/:mangaId" element={<MangaInfo />} />
+            <Route path="/manga/:mangaId/:chapter" element={<Manga />} />
             <Route path="/genres" element={<Genre />} />
           </Routes>
         </Container>

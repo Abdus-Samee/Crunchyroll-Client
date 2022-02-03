@@ -39,7 +39,7 @@ function Preference() {
                     <Grid item xs={2} sm={4} md={4} key={manga.ID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <MangaCard title={manga.TITLE} synopsis={manga.SYNOPSIS} release={manga['Release Date']} />
+                                <MangaCard mangaId={manga.MANGAID} title={manga.TITLE} synopsis={manga.SYNOPSIS} release={manga['Release Date']} />
                             </Card>
                         </Box>
                     </Grid>
