@@ -47,6 +47,7 @@ const Navbar = ({ token, logOutFunction }) => {
     else if(page === 'Plan') navigate('/plan')
     else if(page === 'Logout') logOutFunction()
     else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication') //clicking sign up should navigate to sign up page
+    else if(page === 'Blog') navigate('/blogs')
     else if(page === 'Publish Blog') navigate('/write')
 
     setAnchorElNav(null)

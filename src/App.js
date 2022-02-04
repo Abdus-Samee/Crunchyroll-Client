@@ -14,6 +14,7 @@ import Genre from './components/Genre/Genre'
 import AnimeInfo from './components/AnimeInfo/AnimeInfo'
 import MangaInfo from './components/MangaInfo/MangaInfo'
 import Plan from './components/Plan/Plan'
+import Show from './components/Blog/Show'
 import Write from './components/Blog/Write'
 
 import useToken from './hooks/useToken'
@@ -56,6 +57,7 @@ function App() {
             <Route path="/manga/:mangaId" element={<MangaInfo />} />
             <Route path="/manga/:mangaId/:chapter" element={<Manga />} />
             <Route path="/genres" element={<Genre />} />
+            <Route path="/blogs" element={<Show />} />
             <Route path="/write" element={<Write token={token} />} />
           </Routes>
         </Container>
