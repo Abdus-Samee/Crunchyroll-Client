@@ -13,6 +13,8 @@ import Manga from './components/Manga'
 import Genre from './components/Genre/Genre'
 import AnimeInfo from './components/AnimeInfo/AnimeInfo'
 import MangaInfo from './components/MangaInfo/MangaInfo'
+import Plan from './components/Plan/Plan'
+import Write from './components/Blog/Write'
 
 import useToken from './hooks/useToken'
 
@@ -48,11 +50,13 @@ function App() {
             <Route path="/" exact element={<Preference />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
+            <Route path="/plan" element={<Plan />} />
             <Route path="/anime" element={<Anime />} />
             <Route path="/anime/:animeId" element={<AnimeInfo />} />
             <Route path="/manga/:mangaId" element={<MangaInfo />} />
             <Route path="/manga/:mangaId/:chapter" element={<Manga />} />
             <Route path="/genres" element={<Genre />} />
+            <Route path="/write" element={<Write token={token} />} />
           </Routes>
         </Container>
       </Router>

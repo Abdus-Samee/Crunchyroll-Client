@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -13,14 +13,25 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
-const pages = ['Pricing', 'Blog', 'Genres']
+const pages = [ 'Genres', 'Plan', 'Blog']
 const settings = [ 'Dashboard', 'Logout'];
 const authenticates = ['Sign In', 'Sign Up']
 
 const Navbar = ({ token, logOutFunction }) => {
   const navigate = useNavigate()
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const [anchorElNav, setAnchorElNav] = useState(null)
+  const [anchorElUser, setAnchorElUser] = useState(null)
+
+  useEffect(() => {
+    console.log('senge...', token)
+    if(token){
+      var id = token.slice(7)
+      console.log('splitted...', id)
+      if(id[0] === 'a') pages.push('Publish Blog')
+    }else{
+      if(pages.indexOf('Publish Blog') !== -1) pages.splice(pages.indexOf('Publish Blog'), 1)
+    }
+  }, [token])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -33,8 +44,10 @@ const Navbar = ({ token, logOutFunction }) => {
     //works on every link on navbar
     console.log(page)
     if(page === 'Genres') navigate('/genres')
+    else if(page === 'Plan') navigate('/plan')
     else if(page === 'Logout') logOutFunction()
     else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication') //clicking sign up should navigate to sign up page
+    else if(page === 'Publish Blog') navigate('/write')
 
     setAnchorElNav(null)
   };
