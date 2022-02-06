@@ -30,7 +30,7 @@ const AnimeInfo = () => {
             <List component="nav" aria-label="mailbox folders">
                 {episodes.map((episode, index) => (
                     <>
-                        <ListItem button divider onClick={() => navigate('/anime')}>
+                        <ListItem button divider onClick={() => navigate(`/anime/${animeId}/${info.TITLE}/${episode.EPISODE}`)}>
                             <ListItemText primary={'Episode ' + (index+1) + ', Link: ' + episode.EPISODE} />
                         </ListItem>
                         <Divider />
