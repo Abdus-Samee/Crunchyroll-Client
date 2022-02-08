@@ -15,7 +15,7 @@ const MangaCard = ({mangaId, title, synopsis, release}) => {
                     {title}
                 </Typography>
                 <Typography variant="body2">
-                    {synopsis}
+                    {synopsis.substr(0, 50)}...
                 </Typography>
                 <Typography variant="body2">
                     {new Date(release).toLocaleDateString()}

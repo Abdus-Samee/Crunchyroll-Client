@@ -18,16 +18,22 @@ const Plan = () => {
         <div>
             <Slider {...settings}>
             <div className="cen">
-                <h1>Yearly</h1>
+                <h1>1 Year</h1>
+                <p>Cost: 100 credits</p>
+                <br/><br/>
+                <button>Avail Offer</button>
             </div>
             <div className="cen">
-                <h1>Monthly</h1>
+                <h1>6 Months</h1>
+                <p>Cost: 75 credits</p>
+                <br/><br/>
+                <button>Avail Offer</button>
             </div>
             <div className="cen">
-                <h1>Weekly</h1>
-            </div>
-            <div className="cen">
-                <h1>Daily</h1>
+                <h1>1 Month</h1>
+                <p>Cost: 25 credits</p>
+                <br/><br/>
+                <button>Avail Offer</button>
             </div>
             </Slider>
         </div>

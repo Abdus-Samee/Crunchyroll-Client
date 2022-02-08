@@ -60,7 +60,7 @@ function App() {
             <Route path="/genres" element={<Genre />} />
             <Route path="/blogs" element={<Show />} />
             <Route path="/write" element={<Write token={token} />} />
-            <Route path="/blogs/:blogId" element={<IndividualBlog />} />
+            <Route path="/blogs/:blogId" element={<IndividualBlog token={token} />} />
           </Routes>
         </Container>
       </Router>
