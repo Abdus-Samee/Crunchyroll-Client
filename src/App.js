@@ -53,9 +53,9 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/plan" element={<Plan />} />
-            <Route path="/anime/:animeId" exact element={<AnimeInfo />} />
+            <Route path="/anime/:animeId" exact element={<AnimeInfo token={token} />} />
             <Route path="/anime/:animeId/:animeName/:episode" exact element={<Anime />} />
-            <Route path="/manga/:mangaId" element={<MangaInfo />} />
+            <Route path="/manga/:mangaId" element={<MangaInfo token={token} />} />
             <Route path="/manga/:mangaId/:chapter" element={<Manga />} />
             <Route path="/genres" element={<Genre />} />
             <Route path="/blogs" element={<Show />} />
