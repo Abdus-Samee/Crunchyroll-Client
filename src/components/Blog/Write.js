@@ -31,9 +31,11 @@ const Write = ({token}) => {
     }
     
     const handleSubmit = async () => {
+        //finds the userid from the token stored in sessionStorage
         var x = sessionStorage.getItem('token')
         console.log(x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}',''))
         var id = x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}','')
+        
         if(title && text) {
             const x = await publishBlog({
                 title,

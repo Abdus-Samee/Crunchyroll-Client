@@ -15,6 +15,8 @@ import TextField from '@mui/material/TextField'
 import Rating from 'react-rating'
 
 const AnimeInfo = ({token}) => {
+    const [count, setCount] = useState(0)
+    const [userID, setUserID] = useState('')
     const [info, setInfo] = useState({})
     const [episodes, setEpisodes] = useState([])
     const [reviews, setReviews] = useState([])
@@ -24,6 +26,33 @@ const AnimeInfo = ({token}) => {
     const { animeId } = useParams()
 
     useEffect(() => {
+        //finds the userid from the token stored in sessionStorage
+        if(token){
+            var x = sessionStorage.getItem('token')
+            console.log(x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}',''))
+            var id = x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}','')
+            setUserID(id)
+        }
+
+        //check if a user rating is found and update the rating and/or reviewGiven state
+        fetch("http://localhost:9000/oracle/animereview/"+animeId+"/"+id)
+            .then(response => response.json())
+            .then(data => {
+                if(data.length > 0){
+                    setCount(data[0].COUNT)
+                    if(data[0].RATING) setRating(data[0].RATING)
+                    if(data[0].MEMBER) setReviewGiven(true)
+                }else{
+                    console.log("No rating found...")
+                }
+            })
+        
+        // //add a fetch call for all the reviews for the anime
+        fetch("http://localhost:9000/oracle/animereview/"+animeId)
+            .then(response => response.json())
+            .then(data => setReviews(data))
+
+        //try using joins for the following two calls
         fetch("http://localhost:9000/oracle/anime/"+animeId)
             .then(response => response.json())
             .then(data => setInfo(data))
@@ -33,44 +62,43 @@ const AnimeInfo = ({token}) => {
             .then(data => setEpisodes(data))
     }, [])
 
-    // async function addReview(credentials) {
-    //     return fetch("http://localhost:9000/oracle/blogs/"+blogId, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify(credentials)
-    //     })
-    //       .then(data => data.json())
-    // }
+    async function addReview(credentials) {
+        return fetch("http://localhost:9000/oracle/animereview/"+animeId, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(credentials)
+        })
+          .then(data => data.json())
+    }
 
     const handleSubmit = async e => {
         e.preventDefault()
         const data = new FormData(e.currentTarget)
         var reviewText = data.get('review')
         console.log(reviewText, rating)
-
-        // if(comment){
-        //     console.log('Commented: ', comment)
-
             
-        //     const response = await addReview({
-        //         comment
-        //     });
-        //     console.log(response.success)
+        const response = await addReview({
+            userID,
+            reviewText,
+            rating
+        });
+        console.log(response.success)
 
-        //     //alert user if response.success is false
-        //     if(response.success){
-        //         setComments([...comments, comment])
-        //         setComment('')
-        //     }
-        // }
+        //alert user if response.success is false
+        if(response.success){
+            setReviewGiven(true)
+            window.location.reload()
+        }
     }
 
     return(
         <div>
             <h1>{ info.TITLE }</h1>
             <h5>{ info.SYNOPSIS }</h5>
+            <p>Overall Rating: {count}</p>
+            {reviewGiven && <p>Personal Rating: {rating}</p>}
             <p>Released on : { new Date(info['Release Date'] ).toLocaleDateString() }</p>
             <List component="nav" aria-label="mailbox folders">
                 {episodes.map((episode, index) => (
@@ -85,7 +113,10 @@ const AnimeInfo = ({token}) => {
             <br/>
             <h1 style={{ textAlign: 'center'}}>REVIEWS</h1>
             {reviews.length > 0? reviews.map(review => (
-                <>All the reviews</>
+                <div style={{border: '1px solid #ccc', padding: '10px'}}>
+                    <p>{review.TEXT}</p>
+                    <p>{review.RATING}</p>
+                </div>
             )) : <p>No reviews yet</p>}
             {token && !reviewGiven && (<Accordion>
                 <AccordionSummary
@@ -114,7 +145,6 @@ const AnimeInfo = ({token}) => {
                             name="review"
                             autoComplete="review"
                             autoFocus
-                            onChange={(e) => (e.target.value)}
                         />
                         <Button
                             type="submit"
