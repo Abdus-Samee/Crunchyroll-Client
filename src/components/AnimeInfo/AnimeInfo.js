@@ -32,20 +32,28 @@ const AnimeInfo = ({token}) => {
             console.log(x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}',''))
             var id = x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}','')
             setUserID(id)
+
+            //check if a user rating is found and update the rating and/or reviewGiven state
+            fetch("http://localhost:9000/oracle/animereview/"+animeId+"/"+id)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.length > 0){
+                        setCount(data[0].COUNT)
+                        if(data[0].RATING) setRating(data[0].RATING)
+                        if(data[0].MEMBER) setReviewGiven(true)
+                    }else{
+                        console.log("No rating found...")
+                    }
+                })
+        }else{
+            fetch("http://localhost:9000/oracle/animereview/total/"+animeId)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    data.COUNT !== null && setCount(data.COUNT)
+                })
         }
 
-        //check if a user rating is found and update the rating and/or reviewGiven state
-        fetch("http://localhost:9000/oracle/animereview/"+animeId+"/"+id)
-            .then(response => response.json())
-            .then(data => {
-                if(data.length > 0){
-                    setCount(data[0].COUNT)
-                    if(data[0].RATING) setRating(data[0].RATING)
-                    if(data[0].MEMBER) setReviewGiven(true)
-                }else{
-                    console.log("No rating found...")
-                }
-            })
         
         // //add a fetch call for all the reviews for the anime
         fetch("http://localhost:9000/oracle/animereview/"+animeId)
