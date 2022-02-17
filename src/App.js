@@ -17,6 +17,7 @@ import Plan from './components/Plan/Plan'
 import Show from './components/Blog/Show'
 import Write from './components/Blog/Write'
 import IndividualBlog from './components/Blog/IndividualBlog'
+import TestComponent from './components/TestComponent'
 
 import useToken from './hooks/useToken'
 
@@ -52,7 +53,7 @@ function App() {
             <Route path="/" exact element={<Preference />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
-            <Route path="/plan" element={<Plan />} />
+            <Route path="/plan" element={<Plan token={token} />} />
             <Route path="/anime/:animeId" exact element={<AnimeInfo token={token} />} />
             <Route path="/anime/:animeId/:animeName/:episode" exact element={<Anime />} />
             <Route path="/manga/:mangaId" element={<MangaInfo token={token} />} />
@@ -61,6 +62,7 @@ function App() {
             <Route path="/blogs" element={<Show />} />
             <Route path="/write" element={<Write token={token} />} />
             <Route path="/blogs/:blogId" element={<IndividualBlog token={token} />} />
+            <Route path="/test/:planid/:planrange" element={<TestComponent />} />
           </Routes>
         </Container>
       </Router>

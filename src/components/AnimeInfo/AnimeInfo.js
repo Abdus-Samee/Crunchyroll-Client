@@ -91,7 +91,7 @@ const AnimeInfo = ({token}) => {
             userID,
             reviewText,
             rating
-        });
+        })
         console.log(response.success)
 
         //alert user if response.success is false

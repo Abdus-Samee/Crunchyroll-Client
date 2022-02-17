@@ -1,10 +1,13 @@
-import Slider from "react-slick"
+import { useState, useEffect } from 'react'
+import Slider from 'react-slick'
+import Box from '@mui/material/Box'
+import PlanCard from './PlanCard'
 
 import './styles.css'
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
 
-const Plan = () => {
+const Plan = ({token}) => {
+    const [plan, setPlan] = useState([])
+
     const settings = {
         dots: true,
         fade: true,
@@ -14,28 +17,31 @@ const Plan = () => {
         slidesToScroll: 1
     }
 
+    useEffect(() => {
+        fetch('http://localhost:9000/oracle/plan')
+            .then(res => res.json())
+            .then(data => setPlan(data))
+
+        console.log('Plans ', plan)
+    }, [])
+
     return(
-        <div>
-            <Slider {...settings}>
-            <div className="cen">
-                <h1>1 Year</h1>
-                <p>Cost: 100 credits</p>
-                <br/><br/>
-                <button>Avail Offer</button>
-            </div>
-            <div className="cen">
-                <h1>6 Months</h1>
-                <p>Cost: 75 credits</p>
-                <br/><br/>
-                <button>Avail Offer</button>
-            </div>
-            <div className="cen">
-                <h1>1 Month</h1>
-                <p>Cost: 25 credits</p>
-                <br/><br/>
-                <button>Avail Offer</button>
-            </div>
-            </Slider>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-around',
+            }}
+        >
+            {plan.map(item => (
+                <PlanCard 
+                    key={item.PLANID}
+                    planid={item.PLANID}
+                    planrange={item.PLANRANGE}
+                    plancost={item.COST}
+                />
+            ))}
         </div>
     )
 }
