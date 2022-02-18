@@ -37,6 +37,7 @@ const Plan = ({token}) => {
             {plan.map(item => (
                 <PlanCard 
                     key={item.PLANID}
+                    token={token}
                     planid={item.PLANID}
                     planrange={item.PLANRANGE}
                     plancost={item.COST}
