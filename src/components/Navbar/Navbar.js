@@ -13,7 +13,7 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
-const pages = [ 'Genres', 'Plan', 'Blog']
+const pages = [ 'Genres', 'Plan', 'Blog', 'Premium']
 const settings = [ 'Dashboard', 'Logout'];
 const authenticates = ['Sign In', 'Sign Up']
 
@@ -49,6 +49,7 @@ const Navbar = ({ token, logOutFunction }) => {
     else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication') //clicking sign up should navigate to sign up page
     else if(page === 'Blog') navigate('/blogs')
     else if(page === 'Publish Blog') navigate('/write')
+    else if(page === 'Premium') navigate('/premium')
 
     setAnchorElNav(null)
   };
@@ -86,18 +87,18 @@ const Navbar = ({ token, logOutFunction }) => {
                   id="menu-appbar"
                   anchorEl={anchorElNav}
                   anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
+                    vertical: 'bottom',
+                    horizontal: 'left',
                   }}
                   keepMounted
                   transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
+                    vertical: 'top',
+                    horizontal: 'left',
                   }}
                   open={Boolean(anchorElNav)}
                   onClose={handleCloseNavMenu}
                   sx={{
-                  display: { xs: 'block', md: 'none' },
+                    display: { xs: 'block', md: 'none' },
                   }}
               >
                   {pages.map((page) => (

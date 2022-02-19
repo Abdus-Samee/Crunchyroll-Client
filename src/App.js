@@ -18,6 +18,7 @@ import Show from './components/Blog/Show'
 import Write from './components/Blog/Write'
 import IndividualBlog from './components/Blog/IndividualBlog'
 import TestComponent from './components/TestComponent'
+import Premium from './components/Premium/Premium'
 
 import useToken from './hooks/useToken'
 
@@ -54,7 +55,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/plan" element={<Plan token={token} />} />
-            <Route path="/anime/:animeId" exact element={<AnimeInfo token={token} />} />
+            <Route path="/anime/:animeId" exact element={<AnimeInfo token={token} base="anime" />} />
+            <Route path="/panime/:animeId" exact element={<AnimeInfo token={token} base="panime" />} />
             <Route path="/anime/:animeId/:animeName/:episode" exact element={<Anime />} />
             <Route path="/manga/:mangaId" element={<MangaInfo token={token} />} />
             <Route path="/manga/:mangaId/:chapter" element={<Manga />} />
@@ -62,6 +64,7 @@ function App() {
             <Route path="/blogs" element={<Show />} />
             <Route path="/write" element={<Write token={token} />} />
             <Route path="/blogs/:blogId" element={<IndividualBlog token={token} />} />
+            <Route path="/premium" element={<Premium token={token} />} />
             <Route path="/test/:planid/:planrange" element={<TestComponent />} />
           </Routes>
         </Container>

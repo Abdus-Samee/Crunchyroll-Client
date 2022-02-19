@@ -24,10 +24,10 @@ function Preference() {
             <h1>Animes</h1>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {animes.map(anime => (
-                    <Grid item xs={2} sm={4} md={4} key={anime.ID}>
+                    <Grid item xs={2} sm={4} md={4} key={anime.ANIMEID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <AnimeCard animeId={anime.ANIMEID} title={anime.TITLE} synopsis={anime.SYNOPSIS} release={anime['Release Date']} />
+                                <AnimeCard url="/anime/" animeId={anime.ANIMEID} title={anime.TITLE} synopsis={anime.SYNOPSIS} release={anime['Release Date']} />
                             </Card>
                         </Box>
                     </Grid>
@@ -36,10 +36,10 @@ function Preference() {
             <h1>Mangas</h1>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {mangas.map(manga => (
-                    <Grid item xs={2} sm={4} md={4} key={manga.ID}>
+                    <Grid item xs={2} sm={4} md={4} key={manga.MANGAID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <MangaCard mangaId={manga.MANGAID} title={manga.TITLE} synopsis={manga.SYNOPSIS} release={manga['Release Date']} />
+                                <MangaCard url='/manga/' mangaId={manga.MANGAID} title={manga.TITLE} synopsis={manga.SYNOPSIS} release={manga['Release Date']} />
                             </Card>
                         </Box>
                     </Grid>

@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-const AnimeCard = ({animeId, title, synopsis, release}) => {
+const AnimeCard = ({url, animeId, title, synopsis, release}) => {
     const navigate = useNavigate()
 
     return (
@@ -22,7 +22,7 @@ const AnimeCard = ({animeId, title, synopsis, release}) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button onClick={() => navigate('/anime/'+animeId)} size="small">Watch</Button>
+                <Button onClick={() => navigate(url+animeId)} size="small">Watch</Button>
             </CardActions>
         </React.Fragment>
     )

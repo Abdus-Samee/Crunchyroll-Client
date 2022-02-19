@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import TextField from '@mui/material/TextField'
 import Rating from 'react-rating'
 
-const AnimeInfo = ({token}) => {
+const AnimeInfo = ({token, base}) => {
     const [count, setCount] = useState(0)
     const [userID, setUserID] = useState('')
     const [info, setInfo] = useState({})
@@ -34,7 +34,7 @@ const AnimeInfo = ({token}) => {
             setUserID(id)
 
             //check if a user rating is found and update the rating and/or reviewGiven state
-            fetch("http://localhost:9000/oracle/animereview/"+animeId+"/"+id)
+            fetch(`http://localhost:9000/oracle/${base}review/${animeId}/${id}`)
                 .then(response => response.json())
                 .then(data => {
                     if(data.length > 0){
@@ -46,7 +46,7 @@ const AnimeInfo = ({token}) => {
                     }
                 })
         }else{
-            fetch("http://localhost:9000/oracle/animereview/total/"+animeId)
+            fetch(`http://localhost:9000/oracle/${base}review/total/${animeId}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -56,22 +56,22 @@ const AnimeInfo = ({token}) => {
 
         
         // //add a fetch call for all the reviews for the anime
-        fetch("http://localhost:9000/oracle/animereview/"+animeId)
+        fetch(`http://localhost:9000/oracle/${base}review/${animeId}`)
             .then(response => response.json())
             .then(data => setReviews(data))
 
         //try using joins for the following two calls
-        fetch("http://localhost:9000/oracle/anime/"+animeId)
+        fetch(`http://localhost:9000/oracle/${base}/${animeId}`)
             .then(response => response.json())
             .then(data => setInfo(data))
 
-        fetch("http://localhost:9000/oracle/anime/episodes/"+animeId)
+        fetch(`http://localhost:9000/oracle/${base}/episodes/${animeId}`)
             .then(response => response.json())
             .then(data => setEpisodes(data))
     }, [])
 
     async function addReview(credentials) {
-        return fetch("http://localhost:9000/oracle/animereview/"+animeId, {
+        return fetch(`http://localhost:9000/oracle/${base}review/${animeId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
