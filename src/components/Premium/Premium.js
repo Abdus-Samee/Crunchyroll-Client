@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 import AnimeCard from '../Card'
 import MangaCard from '../MangaCard'
 
 const Premium = ({token}) => {
     const navigate = useNavigate()
+    const [genres, setGenres] = useState([])
     const [panimes, setPanimes] = useState([])
     const [pmangas, setPmangas] = useState([])
 
@@ -19,6 +22,11 @@ const Premium = ({token}) => {
 
     useEffect(() => {
         if(token){
+            //fetch all the genres
+            fetch("http://localhost:9000/oracle/genres")
+                .then(response => response.json())
+                .then(data => setGenres(data))
+
             var userType = token.slice(7)
             console.log('Premium component id: ', userType)
 
@@ -49,8 +57,29 @@ const Premium = ({token}) => {
             navigate('/authentication')
         }
     }, [token])
+
+    const changeGenre = (g) => {
+        console.log('Selected premium genre: ', g)
+        fetch(`http://localhost:9000/oracle/panimegenre/${g}`)
+            .then(response => response.json())
+            .then(data => setPanimes(data))
+
+        fetch(`http://localhost:9000/oracle/pmangagenre/${g}`)
+        .then(response => response.json())
+        .then(data => setPmangas(data))
+    }
+
     return(
         <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1 }}>
+                <Stack spacing={2} direction="row">
+                    {genres.map(genre => (
+                        <Button variant="outlined" onClick={() => changeGenre(genre.GENRENAME)}>
+                            {genre.GENRENAME}
+                        </Button>
+                    ))}
+                </Stack>
+            </Box>
             <h1>Premium Animes</h1>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {panimes.map(panime => (
