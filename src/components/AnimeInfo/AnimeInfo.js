@@ -46,6 +46,8 @@ const AnimeInfo = ({token, base}) => {
                     }
                 })
         }else{
+            if(base === 'panime') navigate('/authentication')
+
             fetch(`http://localhost:9000/oracle/${base}review/total/${animeId}`)
                 .then(response => response.json())
                 .then(data => {
@@ -68,7 +70,7 @@ const AnimeInfo = ({token, base}) => {
         fetch(`http://localhost:9000/oracle/${base}/episodes/${animeId}`)
             .then(response => response.json())
             .then(data => setEpisodes(data))
-    }, [])
+    }, [token])
 
     async function addReview(credentials) {
         return fetch(`http://localhost:9000/oracle/${base}review/${animeId}`, {
