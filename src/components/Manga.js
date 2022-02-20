@@ -1,26 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-const Manga = () => {
-    const [info, setInfo] = useState({})
-    const { mangaId, chapter } = useParams()
+const Manga = ({base}) => {
+    const { mangaId, mangaName, chapter } = useParams()
 
     useEffect(() => {
-        fetch("http://localhost:9000/oracle/manga/"+mangaId)
-            .then(response => response.json())
-            .then(data => setInfo(data))
+        
     }, [])
 
     return (
         <div>
-            <h1>{ info.TITLE }</h1>
-            <h5>{ info.SYNOPSIS }</h5>
-            <p>Released on : { new Date(info['Release Date'] ).toLocaleDateString() }</p>
+            <h1>{ mangaName }</h1>
             <iframe 
                 width="100%" 
                 height="800" 
                 frameBorder="0" 
-                src={"http://localhost:9000/oracle/manga/"+mangaId+"/"+chapter}
+                src={`http://localhost:9000/oracle/${base}/${mangaId}/${chapter}`}
             >
             </iframe>
         </div>

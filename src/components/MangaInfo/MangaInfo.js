@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import TextField from '@mui/material/TextField'
 import Rating from 'react-rating'
 
-const MangaInfo = ({token}) => {
+const MangaInfo = ({token, base}) => {
     const [info, setInfo] = useState({})
     const [chapters, setChapters] = useState([])
     const [reviews, setReviews] = useState([])
@@ -24,11 +24,11 @@ const MangaInfo = ({token}) => {
     const { mangaId } = useParams()
 
     useEffect(() => {
-        fetch("http://localhost:9000/oracle/manga/"+mangaId)
+        fetch(`http://localhost:9000/oracle/${base}/${mangaId}`)
             .then(response => response.json())
             .then(data => setInfo(data))
 
-        fetch("http://localhost:9000/oracle/manga/chapters/"+mangaId)
+        fetch(`http://localhost:9000/oracle/${base}/chapters/${mangaId}`)
             .then(response => response.json())
             .then(data => setChapters(data))
     }, [])
@@ -48,7 +48,7 @@ const MangaInfo = ({token}) => {
             <List component="nav" aria-label="mailbox folders">
                 {chapters.map((chapter, index) => (
                     <>
-                        <ListItem button divider onClick={() => navigate('/manga/'+mangaId+'/'+chapter.CHAPTER)}>
+                        <ListItem button divider onClick={() => navigate(`/${base}/${mangaId}/${info.TITLE}/${chapter.CHAPTER}`)}>
                             <ListItemText primary={'Chapter ' + (index+1) } />
                         </ListItem>
                         <Divider />

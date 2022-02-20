@@ -56,15 +56,20 @@ function App() {
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/plan" element={<Plan token={token} />} />
             <Route path="/anime/:animeId" exact element={<AnimeInfo token={token} base="anime" />} />
-            <Route path="/panime/:animeId" exact element={<AnimeInfo token={token} base="panime" />} />
-            <Route path="/anime/:animeId/:animeName/:episode" exact element={<Anime />} />
-            <Route path="/manga/:mangaId" element={<MangaInfo token={token} />} />
-            <Route path="/manga/:mangaId/:chapter" element={<Manga />} />
+            <Route path="/anime/:animeId/:animeName/:episode" exact element={<Anime base="anime" />} />
+            <Route path="/manga/:mangaId" element={<MangaInfo token={token} base="manga" />} />
+            <Route path="/manga/:mangaId/:mangaName/:chapter" element={<Manga base="manga" />} />
             <Route path="/genres" element={<Genre />} />
             <Route path="/blogs" element={<Show />} />
             <Route path="/write" element={<Write token={token} />} />
             <Route path="/blogs/:blogId" element={<IndividualBlog token={token} />} />
             <Route path="/premium" element={<Premium token={token} />} />
+
+            <Route path="/panime/:animeId" exact element={<AnimeInfo token={token} base="panime" />} />
+            <Route path="/panime/:animeId/:animeName/:episode" exact element={<Anime base="panime" />} />
+            <Route path="/pmanga/:mangaId" element={<MangaInfo token={token} base="pmanga" />} />
+            <Route path="/pmanga/:mangaId/:mangaName/:chapter" element={<Manga base="pmanga" />} />
+
             <Route path="/test/:planid/:planrange" element={<TestComponent />} />
           </Routes>
         </Container>

@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import AnimeCard from '../Card'
+import MangaCard from '../MangaCard'
 
 const Premium = ({token}) => {
     const navigate = useNavigate()
@@ -56,7 +57,31 @@ const Premium = ({token}) => {
                     <Grid item xs={2} sm={4} md={4} key={panime.PANIMEID}>
                         <Box sx={{ minWidth: 275 }}>
                             <Card variant="outlined">
-                                <AnimeCard url="/panime/" animeId={panime.PANIMEID} title={panime.TITLE} synopsis={panime.SYNOPSIS} release={panime['Release Date']} />
+                                <AnimeCard 
+                                    url="/panime/" 
+                                    animeId={panime.PANIMEID} 
+                                    title={panime.TITLE} 
+                                    synopsis={panime.SYNOPSIS} 
+                                    release={panime['Release Date']} 
+                                />
+                            </Card>
+                        </Box>
+                    </Grid>
+                ))}
+            </Grid>
+            <h1>Premium Mangas</h1>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                {pmangas.map(pmanga => (
+                    <Grid item xs={2} sm={4} md={4} key={pmanga.PMANGAID}>
+                        <Box sx={{ minWidth: 275 }}>
+                            <Card variant="outlined">
+                                <MangaCard 
+                                    url="/pmanga/" 
+                                    mangaId={pmanga.PMANGAID} 
+                                    title={pmanga.TITLE} 
+                                    synopsis={pmanga.SYNOPSIS} 
+                                    release={pmanga['Release Date']} 
+                                />
                             </Card>
                         </Box>
                     </Grid>
