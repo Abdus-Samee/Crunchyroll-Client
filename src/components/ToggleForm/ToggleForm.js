@@ -14,7 +14,7 @@ export default function ToggleForm({setToken}) {
 
   const handleSignInSignUp = (e, currentAction) => {
     setAction(currentAction)
-  };
+  }
 
   return (
     <Container>
@@ -24,12 +24,12 @@ export default function ToggleForm({setToken}) {
           onChange={handleSignInSignUp}
           aria-label="signin/signup"
         >
-        <ToggleButton value="signin" aria-label="left aligned">
-            Sign In
-        </ToggleButton>
-        <ToggleButton value="signup" aria-label="centered">
-            Sign Up
-        </ToggleButton>
+          <ToggleButton value="signin" aria-label="left aligned">
+              Sign In
+          </ToggleButton>
+          <ToggleButton value="signup" aria-label="centered">
+              Sign Up
+          </ToggleButton>
         </ToggleButtonGroup>
         {action === 'signin' && <SignIn setAction={setAction} setToken={setToken} />}
         {action === 'signup' && <SignUp setAction={setAction} setToken={setToken} />}

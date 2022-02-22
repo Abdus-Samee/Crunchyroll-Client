@@ -31,6 +31,7 @@ const Premium = ({token}) => {
             console.log('Premium component id: ', userType)
 
             if(userType[0] === 'm'){
+                //extracting the memberid
                 var x = sessionStorage.getItem('token')
                 console.log(x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}',''))
                 var memberid = x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}','')

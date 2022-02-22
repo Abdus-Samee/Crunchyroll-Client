@@ -25,6 +25,7 @@ const Navbar = ({ token, logOutFunction }) => {
   useEffect(() => {
     console.log('senge...', token)
     if(token){
+      //checking if user is admin or not
       var id = token.slice(7)
       console.log('splitted...', id)
       if(id[0] === 'a') pages.push('Publish Blog')
@@ -44,6 +45,7 @@ const Navbar = ({ token, logOutFunction }) => {
     //works on every link on navbar
     console.log(page)
     if(page === 'Genres') navigate('/genres')
+    else if(page === 'Dashboard') navigate('/dashboard')
     else if(page === 'Plan') navigate('/plan')
     else if(page === 'Logout') logOutFunction()
     else if(page === 'Sign In' || page === 'Sign Up') navigate('/authentication') //clicking sign up should navigate to sign up page

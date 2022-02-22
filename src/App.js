@@ -4,7 +4,7 @@ import { Container } from '@mui/material'
 
 import './App.css'
 
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/Dashboard/Dashboard'
 import Preference from './components/Preference'
 import Navbar from './components/Navbar/Navbar'
 import ToggleForm from './components/ToggleForm/ToggleForm'
@@ -52,7 +52,7 @@ function App() {
           <br/>
           <Routes>
             <Route path="/" exact element={<Preference />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard token={token} />} />
             <Route path="/authentication" element={<ToggleForm setToken={setToken} />} />
             <Route path="/plan" element={<Plan token={token} />} />
             <Route path="/anime/:animeId" exact element={<AnimeInfo token={token} base="anime" />} />
