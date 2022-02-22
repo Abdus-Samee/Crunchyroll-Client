@@ -106,6 +106,7 @@ const AnimeInfo = ({token, base}) => {
     return(
         <div>
             <h1>{ info.TITLE }</h1>
+            <h5>Producer - {info.NAME}</h5>
             <h5>{ info.SYNOPSIS }</h5>
             <p>Overall Rating: {count}</p>
             {reviewGiven && <p>Personal Rating: {rating}</p>}
