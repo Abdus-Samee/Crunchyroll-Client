@@ -44,7 +44,7 @@ const Write = ({token}) => {
             })
 
             if(x.reply === 1) {
-                window.location.href = '/blog'
+                window.location.href = '/blogs'
             }else console.log(x.reply)
             //else alert for error
         }
