@@ -115,7 +115,7 @@ const AnimeInfo = ({token, base}) => {
                 {episodes.map((episode, index) => (
                     <>
                         <ListItem button divider onClick={() => navigate(`/${base}/${animeId}/${info.TITLE}/${episode.EPISODE}`)}>
-                            <ListItemText primary={'Episode ' + (index+1) + ', Link: ' + episode.EPISODE} />
+                            <ListItemText primary={'Episode ' + (index+1)} />
                         </ListItem>
                         <Divider />
                     </>

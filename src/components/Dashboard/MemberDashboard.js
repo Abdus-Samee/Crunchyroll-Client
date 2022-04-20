@@ -13,6 +13,7 @@ const MemberDashboard = () => {
     useEffect(() => {
         //extracting user id
         var x = sessionStorage.getItem('token')
+        console.log('MemberDash ', x)
         console.log(x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}',''))
         var userID = x.slice(x.indexOf('id')+5).replaceAll('"','').replaceAll('}','')
 
